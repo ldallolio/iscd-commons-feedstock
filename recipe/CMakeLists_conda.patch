@@ -11,7 +11,7 @@
 -project(Commons)
  
 -set(CMAKE_CXX_STANDARD 17)
-+project(Commons)
++project(Commons C)
  
  #Find libraries
  if(OPENMP)
