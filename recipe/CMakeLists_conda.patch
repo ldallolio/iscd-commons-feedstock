@@ -1,18 +1,24 @@
 --- C:/Users/lucad/Downloads/Commons-1.0.0/CMakeLists.txt	Fri Jul 23 12:27:28 2021
-+++ C:/Users/lucad/Downloads/Commons-1.0.0/CMakeLists_conda.txt	Sat Apr  1 20:51:10 2023
-@@ -1,8 +1,8 @@
++++ C:/Users/lucad/Downloads/Commons-1.0.0/CMakeLists_conda.txt	Sat Apr  1 21:59:24 2023
+@@ -1,23 +1,27 @@
 -cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 2.8...3.26)
  set(CMAKE_BUILD_TYPE  "Release")
  SET(CMAKE_C_FLAGS   "-w -g -O3 -funroll-loops")
  set(CMAKE_MACOSX_RPATH 1)
 -set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-+
  
- project(Commons)
+-project(Commons)
  
-@@ -16,8 +16,15 @@
-     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+-set(CMAKE_CXX_STANDARD 17)
++project(Commons)
+ 
+ #Find libraries
+ if(OPENMP)
+   find_package(OpenMP)
+   if (OPENMP_FOUND)
+     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
    endif()
  endif()
 +
@@ -27,7 +33,7 @@
  
  #Commons library
  SET(                   SOURCES_DIR sources)
-@@ -25,11 +32,16 @@
+@@ -25,11 +29,16 @@
  file(                  GLOB_RECURSE header_files ${SOURCES_DIR}/*.h)
  include_directories(   ${SOURCES_DIR})
  add_library(           Commons SHARED ${source_files})
