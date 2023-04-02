@@ -12,7 +12,7 @@ source:
   patches:
     - CMakeLists_conda.patch
 build:
-  number: 1
+  number: 2
   skip: true  # [py<3]
   run_exports:
     - {{ pin_subpackage('iscd-commons', max_pin='x.x.x') }}
@@ -32,17 +32,17 @@ test:
   commands:
     - test -f $PREFIX/lib/libCommons.so  # [linux]
     - test -f $PREFIX/lib/libCommons.dylib  # [osx]
-    - if not exist %PREFIX%\\lib\\libCommons.dll exit 1  # [win]
+    - if not exist %LIBRARY_LIB%\\libCommons.dll exit 1  # [win]
     - test -f $PREFIX/include/chrono.h  # [unix]
     - test -f $PREFIX/include/eigen.h  # [unix]
     - test -f $PREFIX/include/libmesh5.h  # [unix]        
     - test -f $PREFIX/include/lplib3.h  # [unix]
     - test -f $PREFIX/include/sparse.h  # [unix]
-    - if not exist %PREFIX%\\include\\chrono.h exit 1  # [win]
-    - if not exist %PREFIX%\\include\\eigen.h exit 1  # [win]
-    - if not exist %PREFIX%\\include\\libmesh5.h exit 1  # [win]
-    - if not exist %PREFIX%\\include\\lplib3.h exit 1  # [win]
-    - if not exist %PREFIX%\\include\\sparse.h exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\chrono.h exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\eigen.h exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\libmesh5.h exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\lplib3.h exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\sparse.h exit 1  # [win]
 
 about:
   home: https://iscd.sorbonne-universite.fr/
